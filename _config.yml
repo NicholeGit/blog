@@ -8,8 +8,8 @@ email: 2762481669@qq.com
 duoshuo: nicholegit
 beian: 
 cnzz: 
---weibo: hustcat
---github: hustcat
+#weibo: hustcat
+#github: hustcat
 pygments: true
 paginate: 20
 truncate: true
