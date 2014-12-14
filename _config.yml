@@ -1,7 +1,7 @@
 markdown: rdiscount
 permalink: /:title/
 url: http://nicholegit.github.io
-name: 杨巍
+name: yangwei
 author: nicholegit
 qq:2762481669 
 email: 2762481669@qq.com
@@ -13,4 +13,4 @@ github:
 pygments: true
 paginate: 20
 truncate: true
-about: "杨巍(nichole)"
+about: "yangwei(nichole)"
