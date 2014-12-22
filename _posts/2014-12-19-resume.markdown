@@ -106,7 +106,7 @@ excerpt: 我的简历
 - LUA
 - XML
 - Go Language
-
+- Node.js
 ---
 
 # 致谢
