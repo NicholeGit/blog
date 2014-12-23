@@ -1,14 +1,17 @@
 ---
 layout: post
-title:  "golang常用库“
+title: "golang常用库“
 categories: 个人
 tags: golang
-excerpt: 个人手机的一些golang库
+excerpt: 个人收集的一些golang库
 
 ---
 
 
-![我labs](https://github.com/NicholeGit/notes/tree/master/golang/README.md)
+---
+@[我labs](https://github.com/NicholeGit/notes/tree/master/golang/README.md)
 
 
-@[caption](http://www.baidu.com)
+@[](http://pad.haroopress.com/page.html?f=haroopad-flavored-markdown)
+
+
