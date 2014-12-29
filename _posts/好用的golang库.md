@@ -15,6 +15,7 @@ excerpt: 个人收集的一些golang库
 |[overall](https://github.com/funny/overall)|这个包可以帮你监控你的Go应用的总体运行情况。<br>GC综合情况M<br>监控执行时间<br>[详情](https://github.com/funny/overall/blob/master/README_CN.md)|
 |[link](https://github.com/funny/link)|这是一个简易的Go语言网络库，它专注于解决基于消息包的长连接通讯需求。<br>它内置了类似于Erlang的{packet: N}那样的分包协议，同时也支持自定义的分包协议。<br>但是它并不限制请求和响应消息中的编码和解码格式。<br>这个库中还提供了Session管理和广播等功能，可加速您的开发效率。|
 |[sync](https://github.com/funny/sync) |这个包用来在开发调试期，帮助排查程序中的死锁情况。（golang1.4出现问题无法取得goroutine id）|
+|[GoRealtimeWeb](https://github.com/SimonWaldherr/GoRealtimeWeb)|实时web应用程序示例<br>实例包括: <br>1.server-snet events<br>2.Long Polling <br>3.Websocket|
 
 ---
 [我labs](https://github.com/NicholeGit/notes/tree/master/golang/README.md)
