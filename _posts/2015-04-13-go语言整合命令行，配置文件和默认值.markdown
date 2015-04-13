@@ -15,9 +15,9 @@ go-options提供了Resolve函数来解决默认值、命令行和配置文件的
 1. 配置文件值
 1. 选择结构的默认值
 
-下面用一个例子来说明：
+## 下面用一个例子来说明：
+- main.go文件
 
-main.go文件
 ```go
 package main
 
@@ -78,8 +78,7 @@ test.exe -http-address 192.168.1.1:80 运行结果
 */
 
 ```
- config.txt文件
- 
+- config.txt文件
 ```go
 http-address="127.0.0.1:4161"
 ```
