@@ -2,11 +2,12 @@
 layout: post
 title: go语言整合命令行，配置文件和默认值
 categories: golang
-tags: golang;
+tags: golang 
 excerpt: 在编程过程中经常会需要灵活配置程序，这时候就需要有配置文件，但是有时候又可能会出现想通过命令行的方式来临时改变配置文件的情况，这时候就可以使用`github.com/mreiferson/go-options`。
 ---
 这段时间在看nsq的源码，发现一个很好用的`go-options`库，在这和大家分享一下。
 在编程过程中经常会需要灵活配置程序，这时候就需要有配置文件，但是有时候又可能会出现想通过命令行的方式来临时改变配置文件的情况，这时候就可以使用`github.com/mreiferson/go-options`。
+
 go-options提供了Resolve函数来解决默认值、命令行和配置文件的冲突问题。
 解析值的优先级(由高到低):
 
@@ -17,7 +18,6 @@ go-options提供了Resolve函数来解决默认值、命令行和配置文件的
 下面用一个例子来说明：
 
 main.go文件
-
 ```go
 package main
 
