@@ -67,20 +67,22 @@ func main() {
 	options.Resolve(opts, flagSet, cfg)
 	fmt.Println(opts)
 }
-
-/*
-main.exe 运行结果
-&{127.0.0.1:4161}
-
-test.exe -http-address 192.168.1.1:80 运行结果
-&{192.168.1.1:80}
-
-屏蔽config.txt文件中的http-address，运行main.exe 运行结果
-&{NewNSQLookupdOptions}
-*/
-
 ```
 - config.txt文件
 ```go
 http-address="127.0.0.1:4161"
 ```
+<br>
+<br>
+## 运行结果
+- main.exe 运行结果<br>
+	`&{127.0.0.1:4161}`
+<br>
+<br>
+- test.exe -http-address 192.168.1.1:80 运行结果<br>
+	`&{192.168.1.1:80}`
+<br>
+<br>
+- 屏蔽config.txt文件中的http-address，运行main.exe 运行结果<br>
+	`&{NewNSQLookupdOptions}`
+
