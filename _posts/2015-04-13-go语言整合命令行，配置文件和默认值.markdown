@@ -1,0 +1,81 @@
+---
+layout: post
+title: go语言整合命令行，配置文件和默认值
+categories: golang
+tags: golang;
+excerpt: 在编程过程中经常会需要灵活配置程序，这是就需要有配置文件，但是有时候又可能会出现想通过命令行的方式来临时改变配置文件的情况，这时候可以使用`github.com/mreiferson/go-options`。
+---
+这段时间在看nsq的源码，发现一个很好用的`go-options`库，在这和大家分享一下。
+在编程过程中经常会需要灵活配置程序，这是就需要有配置文件，但是有时候又可能会出现想通过命令行的方式来临时改变配置文件的情况，这时候可以使用`github.com/mreiferson/go-options`。
+go-options提供了Resolve函数来解决默认值、命令行和配置文件的冲突问题。
+解析值的优先级(由高到低):
+1. 命令行标记
+1. 配置文件值
+1. 选择结构的默认值
+
+下面用一个例子来说明：
+main.go文件
+```go
+package main
+
+import (
+	"flag"
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/BurntSushi/toml"
+	"github.com/mreiferson/go-options"
+)
+
+type nsqlookupdOptions struct {
+	//'flag'表示命令行中的参数名
+	//'cfg'表示配置文件中的参数名
+	HTTPAddress string `flag:"http-address" cfg:"http-address"`
+}
+
+func NewNSQLookupdOptions() *nsqlookupdOptions {
+	return &nsqlookupdOptions{
+		HTTPAddress: "NewNSQLookupdOptions",
+	}
+}
+
+var (
+	flagSet     = flag.NewFlagSet("nsqlookupd", flag.ExitOnError)
+	config      = flagSet.String("config", "config.txt", "path to config file")
+    
+    //注意这里面的默认值对Resolve函数不起作用，只是给httpAddress赋值
+    httpAddress = flagSet.String("http-address", "0.0.0.0:4161", "<addr>:<port> to listen on for HTTP clients")
+)
+
+func main() {
+	flagSet.Parse(os.Args[1:])
+	var cfg map[string]interface{}
+	if *config != "" {
+		_, err := toml.DecodeFile(*config, &cfg)
+		if err != nil {
+			log.Fatalf("ERROR: failed to load config file %s - %s", *config, err.Error())
+		}
+	}
+	opts := NewNSQLookupdOptions()
+    //这里使用toml.DecodeFile来读取一个配置文件，实际上cfg只要是一个map[string]interface{}就可以
+	options.Resolve(opts, flagSet, cfg)
+	fmt.Println(opts)
+}
+
+/*
+main.exe 运行结果
+&{127.0.0.1:4161}
+
+test.exe -http-address 192.168.1.1:80 运行结果
+&{192.168.1.1:80}
+
+屏蔽config.txt文件中的http-address，运行main.exe 运行结果
+&{NewNSQLookupdOptions}
+*/
+
+```
+ config.txt文件
+```go
+http-address="127.0.0.1:4161"
+```
